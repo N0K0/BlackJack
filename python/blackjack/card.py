@@ -3,19 +3,30 @@ from blackjack.suit import Suit
 
 class Card:
     def __init__(self, rank: int, suit: Suit):
-        self.rank = rank
+        if rank <= 0:
+            raise ValueError("Invalid card value")
+
+        if rank >= 14:
+            raise ValueError("Invalid card value")
+
+        self._rank = rank
         self.suit: Suit = suit
 
+    @property
+    def rank(self):
+        if self._rank == 1:
+            return 11
+
+        return min(self._rank, 10)
+
     def __str__(self):
-        if 0 < self.rank < 10:
+        if 2 <= self._rank <= 10:
             return str(self.rank)
-        elif self.rank == 10:
-            return "J"
-        elif self.rank == 11:
-            return "Q"
-        elif self.rank == 12:
-            return "K"
-        elif self.rank == 13:
+        elif self._rank == 1:
             return "A"
-        else:
-            raise RuntimeError(f"Card has illegal rank: {self.rank}")
+        elif self._rank == 11:
+            return "J"
+        elif self._rank == 12:
+            return "Q"
+        elif self._rank == 13:
+            return "K"

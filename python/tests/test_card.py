@@ -1,4 +1,5 @@
 import unittest
+from operator import attrgetter
 
 from blackjack.suit import Suit
 from blackjack.card import Card
@@ -10,7 +11,7 @@ class DeckTest(unittest.TestCase):
 
         # I know this is wierd, but that's just how Black Splits when PEP8 is in play
         self.cards_str = [
-            "1",
+            "A",
             "2",
             "3",
             "4",
@@ -19,22 +20,28 @@ class DeckTest(unittest.TestCase):
             "7",
             "8",
             "9",
+            "10",
             "J",
             "Q",
             "K",
-            "A",
         ]
 
-    def test_show(self):
+        # Building our expected value with little finesse, as its simple
+        self.expected_int = list(map(lambda v: min(v, 10), range(1, 14)))
+        self.expected_int[0] = 11
+
+    def test_str(self):
         card_to_str = list(map(str, self.cards))
-        self.assertEqual(card_to_str, self.cards_str)
+        self.assertEqual(self.cards_str, card_to_str)
+
+    def test_value(self):
+        card_to_int = list(map(attrgetter("rank"), self.cards))
+        self.assertEqual(card_to_int, self.expected_int)
 
     def test_invalid_low(self):
-        card = Card(0, Suit.Clubs)
-        with self.assertRaises(RuntimeError):
-            str(card)
+        with self.assertRaises(ValueError):
+            Card(rank=0, suit=Suit.Clubs)
 
     def test_invalid_high(self):
-        card = Card(100, Suit.Clubs)
-        with self.assertRaises(RuntimeError):
-            str(card)
+        with self.assertRaises(ValueError):
+            Card(rank=100, suit=Suit.Clubs)
