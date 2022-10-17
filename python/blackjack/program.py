@@ -1,13 +1,17 @@
+from typing import List
+
+from blackjack.card import Card
 from blackjack.deck import Deck
 
 
 def main():
 
     deck = Deck()
-    hand = []
+    hand: List[Card] = []
 
     while True:
         read = input('Stand, Hit:\n')
+
         if read == 'Hit':
             card = deck.cards.pop()
             hand.append(card)
