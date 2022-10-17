@@ -30,3 +30,15 @@ class Card:
             return "Q"
         elif self._rank == 13:
             return "K"
+
+    def __eq__(self, other):
+        return self._rank == other._rank and self.suit.value == other.suit.value
+
+    def __gt__(self, other):
+        if self.suit.value > other.suit.value:
+            return True
+
+        if self._rank > other._rank:
+            return True
+
+        return False
