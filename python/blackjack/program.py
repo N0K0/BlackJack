@@ -17,6 +17,11 @@ def main():
             hand.append(card)
             total = sum([min(card.rank, 10) for card in hand])
             print(f'Hit with {card.suit.name} {card.rank}. Total is {total}')
+
+            if total > 21:
+                print(f"Sorry, you lost!")
+                break
+
         elif read == 'Stand':
             break
 
