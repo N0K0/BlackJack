@@ -1,5 +1,6 @@
 from blackjack.deck import Deck
 
+
 def main():
 
     deck = Deck()
@@ -14,6 +15,7 @@ def main():
             print(f'Hit with {card.suit.name} {card.rank}. Total is {total}')
         elif read == 'Stand':
             break
+
 
 if __name__ == '__main__':
     main()

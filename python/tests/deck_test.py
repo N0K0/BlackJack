@@ -2,6 +2,7 @@ import unittest
 
 from blackjack.deck import Deck
 
+
 class DeckTest(unittest.TestCase):
     def setUp(self):
         self.deck = Deck()

@@ -3,6 +3,7 @@ from collections import deque
 from blackjack.suit import Suit
 from blackjack.card import Card
 
+
 class Deck:
     def __init__(self):
         self.cards = deque()
