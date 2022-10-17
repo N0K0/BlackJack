@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "blackjack"
+version = "2019.10.24"
+description = "Half-implemented blackjack application"
+authors = ["Øystein Blixhavn <oeb@itverket.no>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.scripts]
+play = "blackjack.program:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
