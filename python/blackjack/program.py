@@ -11,7 +11,15 @@ class RoundStatus(Enum):
     won = 1
 
 
+from logging import log
+
+
 def sum_hand(hand: List[Card]) -> int:
+    """
+
+    :param hand:
+    :return:
+    """
     aces = 0
     summation = 0
     for card in hand:
