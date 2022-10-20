@@ -33,9 +33,6 @@ def main():
     hand: List[Card] = []
     hand_dealer: List[Card] = []
 
-    # -1: Lost
-    #  0: Tie
-    #  1: Won
     status: Optional[RoundStatus] = None
 
     # Technically we could pull this card after the player is done, buts its more correct to do it now
@@ -49,7 +46,6 @@ def main():
     total_dealer = sum_hand(hand_dealer)
 
     while True:
-
         print(f"Player has {total}, dealer has {total_dealer}")
 
         read = input("Stand, Hit:\n")
